@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Capsule Invitation</title>
+    <meta property="og:title" content="You're invited to a Time Capsule!">
+    <meta property="og:description" content="Add your message - it unlocks on the special day 🎁">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+        }
+        .icon { font-size: 80px; margin-bottom: 20px; }
+        h1 { color: #667eea; font-size: 32px; margin-bottom: 15px; font-weight: 800; }
+        .subtitle { color: #666; font-size: 16px; margin-bottom: 30px; line-height: 1.6; }
+        .code-box {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 30px 0;
+            border: 2px solid #e5e7eb;
+        }
+        .code-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .code {
+            font-size: 36px;
+            font-weight: bold;
+            color: #764ba2;
+            letter-spacing: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            width: 100%;
+            transition: transform 0.2s;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            box-shadow: none;
+        }
+        .steps {
+            text-align: left;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 12px;
+        }
+        .steps li { margin: 10px 0; color: #555; line-height: 1.6; }
+        .info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e7eb;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🎁</div>
+        <h1>Time Capsule Invitation</h1>
+        <p class="subtitle">You've been invited to add a message!</p>
+        
+        <div class="code-box">
+            <div class="code-label">Your Event Code</div>
+            <div class="code" id="eventCode">Loading...</div>
+        </div>
+        
+        <button class="btn" onclick="openApp()">
+            📱 Open in Time Capsule App
+        </button>
+        
+        <div class="steps">
+            <strong style="color: #667eea;">Don't have the app?</strong>
+            <ol style="margin-top: 10px; padding-left: 20px;">
+                <li>Download Time Capsule from Play Store</li>
+                <li>Open the app</li>
+                <li>Enter the code above</li>
+            </ol>
+        </div>
+        
+        <a href="https://play.google.com/store" class="btn btn-secondary">
+            ⬇️ Download from Play Store
+        </a>
+        
+        <div class="info">
+            Messages unlock on the special day 🎉
+        </div>
+    </div>
+
+    <script>
+        // Extract code from URL path
+        const pathParts = window.location.pathname.split('/');
+        const shareCode = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2] || 'INVALID';
+        
+        // Remove .html extension if present
+        const cleanCode = shareCode.replace('.html', '').replace('timecapsule', '').replace(/\//g, '').trim() || 'INVALID';
+        
+        document.getElementById('eventCode').textContent = cleanCode;
+        
+        function openApp() {
+            const appUrl = 'timecapsule://event/' + cleanCode;
+            window.location.href = appUrl;
+            
+            setTimeout(function() {
+                if (confirm('Time Capsule not installed. Go to Play Store?')) {
+                    window.location.href = 'https://play.google.com/store';
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
