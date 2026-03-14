@@ -203,6 +203,12 @@ Contributions, issues, and feature requests are welcome!
 
 
 <p align="center">
+  <img src="screenshots/1-login.jpg" width="200"/>
+  <img src="screenshots/2-theme_selection.jpg" width="200"/>
+  <img src="screenshots/3-message.png" width="200"/>
+</p>
+
+<p align="center">
   Made with ❤️ using Flutter
 </p>
 
