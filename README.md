@@ -2,9 +2,6 @@
 
 > Create surprise messages that unlock on special dates
 
-[![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.io)
-[![GetX](https://img.shields.io/badge/GetX-8B5CF6?logo=flutter&logoColor=white)](https://pub.dev/packages/get)
 
 <p align="center">
   <img src="screenshots/demo.gif" alt="Time Capsule Demo" width="300"/>
