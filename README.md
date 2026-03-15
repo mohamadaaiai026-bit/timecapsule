@@ -40,7 +40,7 @@
 
 **[📥 Download APK (Android)](https://github.com/mohamadaaiai026-bit/timecapsule/releases/latest)**
 
-**[🎥 Watch Demo Video]([[YOUR_YOUTUBE_LINK](https://drive.google.com/file/d/1xqDcShnvxnUu0y-ZbDvCc49hG3zYuZVK/view))]**
+**[🎥 Watch Demo Video](https://drive.google.com/file/d/1xqDcShnvxnUu0y-ZbDvCc49hG3zYuZVK/view)**
 
 ## 🛠️ Tech Stack
 
