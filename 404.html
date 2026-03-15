@@ -77,6 +77,14 @@
             border: 2px solid #667eea;
             box-shadow: none;
         }
+        .btn-github {
+            background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+            color: white;
+            box-shadow: 0 10px 25px rgba(36, 41, 46, 0.4);
+        }
+        .btn-github:hover {
+            box-shadow: 0 15px 35px rgba(36, 41, 46, 0.5);
+        }
         .steps {
             text-align: left;
             margin: 20px 0;
@@ -91,6 +99,29 @@
             border-top: 1px solid #e5e7eb;
             color: #888;
             font-size: 14px;
+        }
+        .badge {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .download-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 12px;
+        }
+        .download-title {
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -112,15 +143,26 @@
         <div class="steps">
             <strong style="color: #667eea;">Don't have the app?</strong>
             <ol style="margin-top: 10px; padding-left: 20px;">
-                <li>Download Time Capsule from Play Store</li>
-                <li>Open the app</li>
-                <li>Enter the code above</li>
+                <li>Download Time Capsule APK below</li>
+                <li>Install and open the app</li>
+                <li>Enter the code shown above</li>
             </ol>
         </div>
         
-        <a href="https://play.google.com/store" class="btn btn-secondary">
-            ⬇️ Download from Play Store
-        </a>
+        <div class="download-section">
+            <div class="download-title">📥 Download Options</div>
+            
+            <!-- GitHub Download Button -->
+            <a href="https://github.com/mohamadaaiai026-bit/timecapsule/releases/latest/download/app-release.apk" class="btn btn-github">
+                📦 Download APK (GitHub)
+            </a>
+            
+            <!-- Play Store Coming Soon -->
+            <a href="https://play.google.com/store" class="btn btn-secondary" style="opacity: 0.6; cursor: not-allowed; position: relative;">
+                <span>⬇️ Play Store</span>
+                <span class="badge">Coming Soon</span>
+            </a>
+        </div>
         
         <div class="info">
             Messages unlock on the special day 🎉
@@ -129,44 +171,37 @@
 
     <script>
         // Extract share code from URL path
-        // URL format: https://mohamadaaiai026-bit.github.io/timecapsule/ABC123
         function getShareCode() {
             const path = window.location.pathname;
-            const parts = path.split('/').filter(p => p); // Remove empty parts
+            const parts = path.split('/').filter(p => p);
             
-            // Get last part after 'timecapsule'
             const timecapsuleIndex = parts.indexOf('timecapsule');
             if (timecapsuleIndex !== -1 && parts.length > timecapsuleIndex + 1) {
                 return parts[timecapsuleIndex + 1];
             }
             
-            // Fallback: get last part
             return parts[parts.length - 1] || 'INVALID';
         }
         
         const shareCode = getShareCode();
-        document.getElementById('eventCode').textContent = shareCode;
+        const cleanCode = shareCode.replace('.html', '').replace('timecapsule', '').replace(/\//g, '').trim() || 'INVALID';
+        
+        document.getElementById('eventCode').textContent = cleanCode;
         
         function openApp() {
-            const appUrl = 'timecapsule://event/' + shareCode;
-            const playStoreUrl = 'https://play.google.com/store';
+            const appUrl = 'timecapsule://event/' + cleanCode;
+            const githubDownload = 'https://github.com/mohamadaaiai026-bit/timecapsule/releases/latest/download/app-release.apk';
             
             // Try to open app
             window.location.href = appUrl;
             
-            // Fallback to Play Store after 2 seconds
+            // Fallback to GitHub download after 2 seconds
             setTimeout(function() {
-                if (confirm('Time Capsule not installed. Go to Play Store?')) {
-                    window.location.href = playStoreUrl;
+                if (confirm('Time Capsule not installed. Download APK from GitHub?')) {
+                    window.location.href = githubDownload;
                 }
             }, 2000);
         }
-        
-        // Auto-redirect to app (optional)
-        // Uncomment to automatically try opening app
-        // window.addEventListener('load', function() {
-        //     setTimeout(openApp, 500);
-        // });
     </script>
 </body>
 </html>
